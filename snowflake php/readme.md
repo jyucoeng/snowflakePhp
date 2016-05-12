@@ -1,10 +1,7 @@
-
-订单ID 生成策略
-毫秒级时间41位+ 机器ID 10位+ 毫秒内序列12位。
-0 41 51 64 +-----+ |time |macheine id |inc | +----+
-前41bits是以毫秒为单位的timestamp。
-接着10bits是事先配置好的机器ID。
-最后12bits是累加计数器。
+Twitter-Snowflake算法(用于生成订单id)
+算法核心  
+把时间戳，工作机器id，序列号（多线程建议使用atomic）组合在一起。
+41bit-时间戳+10bit-工作机器id+12bit-序列号
 
 注：
 time---毫秒级
